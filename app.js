@@ -13,10 +13,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(function (req, res, next){
     const error = new Error("Not found");
     error.status = 404;
-    next(404);
+    next(error);
 });
 
 /* Bootstrap */
-const server = app.listen(3000, function () {
-    console.log('Listening on port 3000');
+const server = app.listen(process.env.PORT || 3000, function () {
+    console.log(`Listening on port ${server.address().port}`);
 });
